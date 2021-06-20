@@ -1,0 +1,111 @@
+<template>
+  <div class="herader-search">
+
+    <div class="herader-search__box" v-bind:class="{ active: isActive }">
+      <button class="herader-search__find-btn" v-bind:class="{ active: isActive }">Find</button>
+      <input class="herader-search__input" v-bind:class="{ active: isActive }" type="text">
+    </div>
+
+    <button class="herader-search__search-btn" @click="isActive = !isActive">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12.1498 10.6918H11.3819L11.1098 10.4294C12.0623 9.32133 12.6358 7.88279 12.6358 6.3179C12.6358 2.82847 9.80732 0 6.3179 0C2.82847 0 0 2.82847 0 6.3179C0 9.80732 2.82847 12.6358 6.3179 12.6358C7.88279 12.6358 9.32133 12.0623 10.4294 11.1098L10.6918 11.3819V12.1498L15.5517 17L17 15.5517L12.1498 10.6918ZM6.3179 10.6918C3.89766 10.6918 1.94397 8.73814 1.94397 6.3179C1.94397 3.89766 3.89766 1.94397 6.3179 1.94397C8.73814 1.94397 10.6918 3.89766 10.6918 6.3179C10.6918 8.73814 8.73814 10.6918 6.3179 10.6918Z"
+          fill="white" fill-opacity="0.7" />
+      </svg>
+    </button>
+
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        isActive: false
+      }
+    }
+  }
+
+</script>
+
+<style lang="scss" scoped>
+  .herader-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+
+    &__box {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: -30px;
+      transition: .5s;
+
+      &.active {
+        transition: .5s;
+        left: -208px;
+      }
+    }
+
+    &__find-btn {
+      cursor: pointer;
+      border-radius: 12px 0px 0px 12px;
+      background: #DCA74A;
+      color: #fff;
+      opacity: 0;
+      border: 0;
+      height: 24px;
+      overflow: hidden;
+      width: 12px;
+      transition: .5s;
+      transition-delay: .5s, 50ms;
+      transition-property: opacity, width;
+      z-index: -1;
+
+      &.active {
+        transition: .5s;
+        transition-delay: .5s, 50ms;
+        transition-property: width, opacity;
+        width: 46px;
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+
+    &__input {
+      border-radius: 0px 12px 12px 0px;
+      padding: 0px 6px;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      border: 0;
+      outline: none;
+      height: 24px;
+      transition: .5s;
+      overflow: hidden;
+      width: 12px;
+      z-index: -1;
+      transition-delay: .5s, 50ms;
+      transition-property: opacity, width;
+
+      &.active {
+        transition: .5s;
+        transition-delay: .5s, 50ms;
+        transition-property: width, opacity;
+        width: 160px;
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+
+    &__search-btn {
+      cursor: pointer;
+      background: none;
+      padding: 4px;
+      margin: 0;
+      border: none;
+    }
+  }
+
+</style>
